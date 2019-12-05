@@ -18,3 +18,4 @@ def get_courses_list(obj):
     line = fo_course.readline().rstrip()
     obj.year_of_course = line
     fo_course.close()
+    
