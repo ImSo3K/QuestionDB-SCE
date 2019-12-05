@@ -12,14 +12,14 @@ class Course:
         self.course_name = course_name
         self.lecturer_name = lecturer_name
         self.year_of_course = year_of_course
-        course_dep = Department()
+        self.course_dep = Department()
 
     def __del__(self):
         print('Course obj deleted')
 
 
 class Question:
-    def __init__(self, question_info=dict):
+    def __init__(self, **question_info):
         self.question_info = question_info
 
     def __del__(self):
@@ -29,8 +29,8 @@ class Question:
 class Exam:
     def __init__(self, exam_date):
         self.exam_date = exam_date
-        exam_course = Course()
-        question_list = Question()
+        self.exam_course = Course()
+        self.question_list = [Question()]
 
     def __del__(self):
         print('Exam obj deleted')
