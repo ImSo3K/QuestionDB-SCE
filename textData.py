@@ -28,3 +28,11 @@ def get_course_info(obj_course: examSystemData.Course, obj_exam: examSystemData.
     obj_course.lecturer_name = line[1]
     obj_course.year_of_course = line[2]
     obj_course.exam = obj_exam
+
+
+def get_department_info(obj_course: examSystemData.Course, obj_department: examSystemData.Department):
+    with open('Departments.txt') as f:
+        line = f.read().split()
+    obj_department.dep_name = line[0]
+    obj_department.coordinator_name = line[1]
+    obj_department.course = obj_course
