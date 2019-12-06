@@ -19,7 +19,7 @@ class Course:
 
 
 class Question:
-    def __init__(self, **question_info):
+    def __init__(self, question_info):
         self.question_info = question_info
 
     def __del__(self):
