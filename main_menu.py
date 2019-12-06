@@ -1,5 +1,8 @@
 import examSystemData
 import textData
+from docx import Document
+from docx.shared import Cm
+
 
 print('initializing objects with the data from the given text files')
 obj1 = examSystemData.Exam()
@@ -36,3 +39,16 @@ while 1 <= choice <= 4:
 
     else:
         print('Invalid Choice')
+
+
+def paste_image_to_docx():
+
+    document = Document()
+    
+    p = document.add_paragraph()
+    r = p.add_run()
+    r.add_text(f'Question : {i}')
+    r.add_picture('/home/sharon/Pictures/holland_farmhouse-wallpaper-1600x900.jpg', width=Cm(15), height=Cm(10))
+    r = p.add_run()
+
+    document.save('Questions.docx')
