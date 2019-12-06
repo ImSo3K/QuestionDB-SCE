@@ -1,10 +1,19 @@
-class Department:
-    def __init__(self, dep_name='', coordinator_name=''):
-        self.dep_name = dep_name
-        self.coordinator_name = coordinator_name
+class Question:
+    def __init__(self):
+        self.question_info = {'Difficulity': '', 'Topic': '', 'sub_topic': '', 'Code': '', 'Format': ''}
 
     def __del__(self):
-        print('Dep obj deleted')
+        print('Question obj deleted')
+
+
+class Exam:
+    def __init__(self, exam_date='', semester=''):
+        self.exam_date = exam_date
+        self.exam_semester = semester
+        self.question_list = []
+
+    def __del__(self):
+        print('Exam obj deleted')
 
 
 class Course:
@@ -12,25 +21,17 @@ class Course:
         self.course_name = course_name
         self.lecturer_name = lecturer_name
         self.year_of_course = year_of_course
-        self.course_dep = Department()
+        self.exam = Exam()
 
     def __del__(self):
         print('Course obj deleted')
 
 
-class Question:
-    def __init__(self, **question_info):
-        self.question_info = question_info
+class Department:
+    def __init__(self, dep_name='', coordinator_name=''):
+        self.dep_name = dep_name
+        self.coordinator_name = coordinator_name
+        self.course = Course()
 
     def __del__(self):
-        print('Question obj deleted')
-
-
-class Exam:
-    def __init__(self, exam_date):
-        self.exam_date = exam_date
-        self.exam_course = Course()
-        self.question_list = [Question()]
-
-    def __del__(self):
-        print('Exam obj deleted')
+        print('Dep obj deleted')
