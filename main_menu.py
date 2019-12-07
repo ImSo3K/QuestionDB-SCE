@@ -2,6 +2,20 @@ import examSystemData
 import textData
 from docx import Document
 from docx.shared import Cm
+from pdf2image import convert_from_path, convert_from_bytes
+from pdf2image.exceptions import (
+    PDFInfoNotInstalledError,
+    PDFPageCountError,
+    PDFSyntaxError
+)
+
+import tempfile
+
+
+def pdf_2_image():
+    with tempfile.TemporaryDirectory() as path:
+        images_from_path = convert_from_path('/home/sharon/Desktop/Python/PyCharm/Project1/BW.pdf',
+                                             output_folder='/home/sharon/Desktop/Python/PyCharm/Project1/')
 
 
 print('initializing objects with the data from the given text files')
@@ -16,6 +30,7 @@ textData.get_department_info(obj2, obj3)
 print('Press 1 to print Department data')
 print('Press 2 to print Course data')
 print('Press 3 to print Exam data')
+print('Press 4 to convert pdf2image & then image2docx')
 print('Press 0 to exit')
 choice = 1
 while 1 <= choice <= 4:
@@ -34,21 +49,11 @@ while 1 <= choice <= 4:
         for i in obj2.exam.question_list:
             examSystemData.Question.print_question_info(i)
 
+    elif choice == 4:
+        pdf_2_image()
+
     elif choice == 0:
         break
 
     else:
         print('Invalid Choice')
-
-
-def paste_image_to_docx():
-
-    document = Document()
-    
-    p = document.add_paragraph()
-    r = p.add_run()
-    r.add_text(f'Question : {i}')
-    r.add_picture('/home/sharon/Pictures/holland_farmhouse-wallpaper-1600x900.jpg', width=Cm(15), height=Cm(10))
-    r = p.add_run()
-
-    document.save('Questions.docx')
