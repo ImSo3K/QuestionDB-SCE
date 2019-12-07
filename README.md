@@ -6,9 +6,9 @@ College Project
 pip install pdf2image
 ```
 1. change the following line in pdf2image.py file in your site-packages:
-```fmt="ppm"``` to ```fmt="png"``` so it will convert to .png file
+```fmt="ppm"``` to ```fmt="png"``` so it will convert to .png format
 
-2. change change the following line in generators.py file in your site-packages:
+2. change the following line in generators.py file in your site-packages:
 ```yield str(uuid4())``` to ```yield str('Question')```
 
 # how to install image2docx
