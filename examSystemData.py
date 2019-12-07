@@ -2,6 +2,10 @@ class Question:
     def __init__(self):
         self.question_info = {'Difficulity': '', 'Topic': '', 'sub_topic': '', 'Code': '', 'Format': ''}
 
+    def print_question_info(self):
+        for k, v in self.question_info.items():
+            print(f'{k} : {v}')
+
     def __del__(self):
         print('Question obj deleted')
 
