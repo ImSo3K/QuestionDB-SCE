@@ -1,16 +1,7 @@
 import examSystemData
 import textData
-import os
-import glob
-from docx import Document
-from docx.shared import Cm
-import tempfile
-from pdf2image import convert_from_path, convert_from_bytes
-from pdf2image.exceptions import (
-    PDFInfoNotInstalledError,
-    PDFPageCountError,
-    PDFSyntaxError
-)
+import pdf2png
+import png2docx
 
 
 def init_and_menu():
@@ -44,39 +35,14 @@ def init_and_menu():
                 examSystemData.Question.print_question_info(i)
 
         elif choice == 4:
-            pdf_2_image()
-            image_2_docx()
+            pdf2png.pdf_2_image()
+            png2docx.image_2_docx()
 
         elif choice == 0:
             break
 
         else:
             print('Invalid Choice')
-
-
-def pdf_2_image():
-    with tempfile.TemporaryDirectory() as path:
-        images_from_path = convert_from_path('/home/sharon/Desktop/Python/PyCharm/Project1/pdf_file/BW.pdf',
-                                             output_folder='/home/sharon/Desktop/Python/PyCharm/Project1'
-                                                           '/images_from_pdf_demo')
-
-
-def image_2_docx():
-    files_name = []
-    os.chdir("/home/sharon/Desktop/Python/PyCharm/Project1/images_from_pdf_demo")
-    for file in glob.glob("*.png"):
-        files_name.append(file)
-    files_name.sort()
-
-    document = Document()
-
-    for i in range(0, len(files_name), 2):
-        p = document.add_paragraph()
-        r = p.add_run()
-        r.add_picture(f'/home/sharon/Desktop/Python/PyCharm/Project1/images_from_pdf_demo/{files_name[i]}',
-                      width=Cm(15), height=Cm(17))
-
-    document.save('/home/sharon/Desktop/Python/PyCharm/Project1/docx_demo/demo.docx')
 
 
 print('initializing objects with the data from the given text files')
