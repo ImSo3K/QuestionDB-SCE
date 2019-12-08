@@ -1,22 +1,6 @@
 import examSystemData
 import textData
-from docx import Document
-from docx.shared import Cm
-from pdf2image import convert_from_path, convert_from_bytes
-from pdf2image.exceptions import (
-    PDFInfoNotInstalledError,
-    PDFPageCountError,
-    PDFSyntaxError
-)
-
-import tempfile
-
-
-def pdf_2_image():
-    with tempfile.TemporaryDirectory() as path:
-        images_from_path = convert_from_path('/home/sharon/Desktop/Python/PyCharm/Project1/BW.pdf',
-                                             output_folder='/home/sharon/Desktop/Python/PyCharm/Project1/')
-
+import pdf2png
 
 print('initializing objects with the data from the given text files')
 obj1 = examSystemData.Exam()
@@ -50,7 +34,7 @@ while 1 <= choice <= 4:
             examSystemData.Question.print_question_info(i)
 
     elif choice == 4:
-        pdf_2_image()
+        pdf2png.pdf_2_image()
 
     elif choice == 0:
         break
