@@ -12,24 +12,25 @@ class QuestionData:
             list_of_values = list_of_values[1:]
         self.question_database.append(empty_question)
 
-    def edit_question(self, v_key='', v_value=''):
-        for i in enumerate(self.question_database):
-            obj = examSystemData.Question()
-            obj.question_info = self.question_database[i]
-            for key in obj.question_info.keys():
-                if key == v_key:
-                    obj.question_info[key] = v_value
+    def edit_question(self, v_num: int, v_key='', v_value=''):
+        obj = self.question_database[v_num - 1]
+        for key in obj.question_info.keys():
+            if key == v_key:
+                obj.question_info[key] = v_value
 
     def print_sorted_question_list_by_diff(self):
-        print(sorted(self.question_database, key=lambda i: i['Difficulity']))
+        list_of_dict = []
+        for m_dict in self.question_database:
+            list_of_dict.append(m_dict.question_info)
+        print(sorted(list_of_dict, key=lambda i: i['Difficulity']))
 
     def print_filtered_question_list(self, v_key='', v_value=''):
-        for i in enumerate(self.question_database):
-            obj = examSystemData.Question()
-            obj.question_info = self.question_database[i]
-            for key, value in obj.question_info.items():
+        for i in range(0, len(self.question_database)):
+            obj = self.question_database
+            for key, value in obj[i].question_info.items():
                 if key == v_key and value == v_value:
                     examSystemData.Question.print_question_info(self.question_database[i])
+                    continue
 
 
 class SolutionData:
