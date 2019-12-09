@@ -22,32 +22,33 @@ def Coordinator_menu(obj: examSystemData.Exam):
         choice = int(input())
         if choice == 1:
             lecturer_first_name, lecturer_last_name = input(
-                'enter lecturer first name + last name with a whitespace between').split()
+                'enter lecturer first name + last name with a whitespace between : ').split()
             obj_user_data.add_lecturer(lecturer_first_name, lecturer_last_name)
 
         if choice == 2:
             lecturer_first_name, lecturer_name_change = input(
-                'enter lecturer first name + the change with a whitespace between').split()
+                'enter lecturer first name + the change with a whitespace between : ').split()
             obj_user_data.edit_lecturer_info(lecturer_first_name, lecturer_name_change)
 
         if choice == 3:
-            obj_solutions.add_sol(input('Add A solution'))
+            obj_solutions.add_sol(input('Add A solution : '))
 
         if choice == 4:
-            list_of_values = input('enter withDifficulity, Topic, sub_topic, Code, Format').split()
+            list_of_values = input('enter with - Difficulity, Topic, sub_topic, Code, Format : ').split()
             obj_questions.add_question(list_of_values)
 
         if choice == 5:
-            key = input('enter what you want to change, Difficulity, Topic, sub_topic, Code, Format')
-            value = input('enter your new value')
-            obj_questions.edit_question(key, value)
+            key = input('enter what you want to change, Difficulity, Topic, sub_topic, Code, Format : ')
+            num = int(input('Enter questions number : '))
+            value = input('enter your new value : ')
+            obj_questions.edit_question(num, key, value)
 
         if choice == 6:
             obj_questions.print_sorted_question_list_by_diff()
 
         if choice == 7:
-            key = input('enter your filter-by-criteria')
-            value = input('enter your filter-by-value')
+            key = input('enter your filter-by-criteria : ')
+            value = input('enter your filter-by-value : ')
             obj_questions.print_filtered_question_list(key, value)
 
         if choice == 8:
