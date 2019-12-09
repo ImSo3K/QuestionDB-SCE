@@ -45,10 +45,10 @@ def init_and_menu():
         elif choice == 5:
             log_choice = 1
             while 1 <= log_choice <= 3:
-                log_choice = int(input())
                 print('1 - to log in as Coordinator')
                 print('2 - to log in as Lecturer')
                 print('3 - to log in as Student')
+                log_choice = int(input())
                 if log_choice == 1:
                     Coordinator.Coordinator_menu(obj1)
 
