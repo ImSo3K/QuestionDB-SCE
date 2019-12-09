@@ -1,6 +1,5 @@
 import examSystemData
 import QuestionAndSolutions
-import UserData
 
 
 def Student_menu(obj: examSystemData.Exam):
