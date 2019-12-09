@@ -39,3 +39,6 @@ class SolutionData:
 
     def add_sol(self, sol=''):
         self.solution_list.append(sol)
+
+    def edit_sol(self, question=0, new_sol=''):
+        self.solution_list[question - 1] = new_sol
