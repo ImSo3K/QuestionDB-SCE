@@ -16,7 +16,8 @@ def Coordinator_menu(obj: examSystemData.Exam):
     print('3 - add a solution\n4 - add a question')
     print('5 - edit a question\n6 - display question by Difficulity')
     print('7 - filter the questions shown by criteria')
-    print('Press 8 to exit')
+    print('8 - edit a solution')
+    print('Press 9 to exit')
     choice = 1
     while 1 <= choice <= 7:
         choice = int(input())
@@ -52,6 +53,11 @@ def Coordinator_menu(obj: examSystemData.Exam):
             obj_questions.print_filtered_question_list(key, value)
 
         if choice == 8:
+            question = int(input("What answer would you want to edit?"))
+            new_sol = input('Enter Your Edit')
+            obj_solutions.edit_sol(question, new_sol)
+
+        if choice == 9:
             break
 
 
