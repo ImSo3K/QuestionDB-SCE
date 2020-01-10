@@ -1,7 +1,14 @@
 # QuestionDB-SCE
 College Project
 
-# How to install pdf2image
+# Prerequisites : 
+
+```
+pdf2image package & image2docx package
+```
+# Installing : 
+
+How to install pdf2image
 ```
 pip install pdf2image
 ```
@@ -11,7 +18,7 @@ pip install pdf2image
 2. change the following line in generators.py file in your site-packages:
 ```yield str(uuid4())``` to ```yield str('Question')```
 
-# how to install image2docx
+how to install image2docx
 
 ```
 pip install python-docx
