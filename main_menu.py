@@ -3,16 +3,26 @@ import textData
 import pdf2png
 import png2docx
 import Actions
-
+import logger
+import time
+start_time = time.time()
+print("--- %s seconds ---" % (time.time() - start_time))
 
 def init_and_menu():
+    logger.logger.info('Entered Main Menu')
     obj1 = examSystemData.Exam()
+    logger.logger.info('Created Exam Object')
     textData.get_exam_info(obj1)
     textData.get_question_info(obj1)
+    logger.logger.info('Got Exam Info From I/O File Object')
     obj2 = examSystemData.Course()
+    logger.logger.info('Created Course Object')
     textData.get_course_info(obj2, obj1)
+    logger.logger.info('Got Course Info From I/O File Object')
     obj3 = examSystemData.Department()
+    logger.logger.info('Created Department Object')
     textData.get_department_info(obj2, obj3)
+    logger.logger.info('Got Department Info From I/O File Object')
     print('Press 1 to print Department data')
     print('Press 2 to print Course data')
     print('Press 3 to print Exam data')
@@ -37,10 +47,13 @@ def init_and_menu():
 
         elif choice == '4':
             pdf2png.pdf_2_image()
+            logger.logger.info('Converted pdf-to-image')
             png2docx.image_2_docx()
+            logger.logger.info('Pasted png-to-docx')
 
         elif choice == '5':
             while True:
+                logger.logger.info('Entered Log In Menu')
                 print('1 - to log in as Coordinator')
                 print('2 - to log in as Lecturer')
                 print('3 - to log in as Student')
@@ -56,20 +69,20 @@ def init_and_menu():
                     Actions.interface('Student', obj1)
 
                 elif log_choice == '0':
+                    logger.logger.info('Exited Log In Menu')
                     break
 
                 else:
                     print('Invalid Choice, Try Again')
+                    logger.logger.warning('Bad Input')
 
         elif choice == '0':
+            logger.logger.info('Exited Main Menu & Program')
             break
 
         else:
             print('Invalid Choice, Try Again')
+            logger.logger.warning('Bad Input')
 
 
-print('initializing objects with the data from the given text files')
 init_and_menu()
-# re-arranged the user's files, way less copy paste code now, way more orginized.
-# convertion worked only on my spesific dir, changed it to work globally with os library.
-# deletes png files after its done.
