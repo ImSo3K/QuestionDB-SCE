@@ -4,9 +4,7 @@ import pdf2png
 import png2docx
 import Actions
 import logger
-import time
-start_time = time.time()
-print("--- %s seconds ---" % (time.time() - start_time))
+
 
 def init_and_menu():
     logger.logger.info('Entered Main Menu')
